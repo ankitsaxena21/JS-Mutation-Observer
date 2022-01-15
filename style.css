@@ -1,4 +1,4 @@
-.parent{
+.container{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,7 +6,7 @@
     border: 2px solid blue;
     background-color: rgb(93, 142, 233);
 }
-div{
+.box{
     width: 100px;
     height: 100px;
     border: 2px solid red;
@@ -20,4 +20,9 @@ div{
 h2 {
     margin-top: 14px;
     text-align: center;
+}
+
+li{
+    font-size: 25px;
+    font-weight: bold;
 }

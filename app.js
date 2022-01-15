@@ -1,4 +1,4 @@
-//import './animes.js'
+import './animes.js'
 
 const mutationObserver = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
@@ -20,34 +20,26 @@ const mutationObserver = new MutationObserver(function (mutations) {
 const parent = document.querySelector('.parent');
 
 mutationObserver.observe(parent, {
-  // subtree: true,
-  // characterData: true,
-  // characterDataOldValue: true,
-  // attributes: true,
-  // attributeFilter: ['id']
+  subtree: true,
+  characterData: true,
+  characterDataOldValue: true,
+  attributes: true,
   childList: true
 })
 
-// setTimeout(() => {
-//     parent.appendChild(document.createElement('div'));
-// }, 2000);
-parent.appendChild(document.createElement('div'));
-//parent.children[0].remove();
+setTimeout(() => {
+  const box5 = document.createElement('div');
+  box5.classList.add('box');
+  box5.appendChild(document.createTextNode('Box 5'))
+  parent.children[0].appendChild(box5);
+}, 1000);
+parent.children[0].children[0].remove();
+
 
 // //changin attributes
-// parent.id = "new id"
+parent.id = "new id"
 
 // //mutationObserver.disconnect(); - to stop mutation observer
-
-
-
-
-
-// const animes = document.querySelector('ul.animes')
-// observer.observe(animes, {
-//   childList: true,
-//   attributes: true
-// })
 
 
 // const poller = setInterval(function () {

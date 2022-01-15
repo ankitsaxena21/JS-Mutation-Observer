@@ -1,3 +1,5 @@
+// animes.js - library that will add/remove random anime to the DOM
+
 const randomAnimeList = ['Naruto', 'Bleach', 'Tokyo Ghoul', "One Piece", "MHA", "Noragami"];
 
 setTimeout(() => {
