@@ -1,11 +1,12 @@
-//import './sizer.js'
-import './bears.js'
+//import './animes.js'
 
-const observer = new MutationObserver(function (mutations) {
-    console.log("changges", mutations)
+const mutationObserver = new MutationObserver(function (mutations) {
   mutations.forEach(function (mutation) {
-    if (mutation.attributeName === 'style') {
-      centerModal()
+    if (mutation.type === 'characterData') {
+      console.log('The characterData was modified.');
+    }
+    if (mutation.type === 'attributes') {
+      console.log('The ' + mutation.attributeName + ' attribute was modified.');
     }
     if (mutation.addedNodes.length) {
       console.log('Added', mutation.addedNodes[0])
@@ -16,67 +17,44 @@ const observer = new MutationObserver(function (mutations) {
   })
 })
 
-const bears = document.querySelector('ul.bears')
-observer.observe(bears, {
-  childList: true,
-  attributes: true
+const parent = document.querySelector('.parent');
+
+mutationObserver.observe(parent, {
+  // subtree: true,
+  // characterData: true,
+  // characterDataOldValue: true,
+  // attributes: true,
+  // attributeFilter: ['id']
+  childList: true
 })
-
-function centerModal () {
-  const width = parseInt(bears.offsetWidth, 10)
-  const height = parseInt(bears.offsetHeight, 10)
-  Object.assign(bears.style, {
-    top: '50%',
-    left: '50%',
-    marginTop: -(height / 2) + 'px',
-    marginLeft: -(width / 2) + 'px',
-  })
-}
-
-// const poller = setInterval(function () {
-//   const bear = document.querySelector('ul.bears li')
-//   if (bear) {
-//     console.log(bear)
-//     clearInterval(poller)
-//   }
-// }, 1000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const mutationObserver = new MutationObserver(entries => {
-//     console.log(entries);
-// })
-
-// const parent = document.querySelector('.parent');
-
-
-// mutationObserver.observe(parent, {
-//     characterData: true,
-//     characterDataOldValue: true,
-//     subtree: true
-//     // attributes: true,
-//     // attributeFilter: ['id']
-//     //childList: true
-// })
-
-// //mutationObserver.disconnect(); - to stop mutation observer
-
 
 // setTimeout(() => {
 //     parent.appendChild(document.createElement('div'));
 // }, 2000);
-// parent.children[0].remove();
+parent.appendChild(document.createElement('div'));
+//parent.children[0].remove();
 
 // //changin attributes
 // parent.id = "new id"
+
+// //mutationObserver.disconnect(); - to stop mutation observer
+
+
+
+
+
+// const animes = document.querySelector('ul.animes')
+// observer.observe(animes, {
+//   childList: true,
+//   attributes: true
+// })
+
+
+// const poller = setInterval(function () {
+//   const anime = document.querySelector('ul.animes li')
+//   if (anime) {
+//     console.log(anime)
+//     clearInterval(poller)
+//   }
+// }, 1000)
+
